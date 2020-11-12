@@ -7,3 +7,8 @@ class Apartment(models.Model):
     Description=models.TextField(blank=True,null=True)
     Occupied=models.BooleanField()
     Tenant_Name=models.TextField(default='Unoccupied')
+
+class Tenant(models.Model):
+    First_Name=models.TextField()
+    
+
