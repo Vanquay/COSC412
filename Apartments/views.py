@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Apartment
 
 # Create your views here.
 def homepage_view(request,*args,**kwargs):
@@ -23,8 +24,7 @@ def payment_view(request,*args,**kwargs):
     return render(request,'payment.html',context)
 
 #Model Views
-def apartment_view(request):
+def apartment_detail_view(request):
     obj=Apartment.objects.get(id=1)
-    context={'Unit':obj.Unit,
-            'Tenant': obj.Tenant_Name}
-    return render(request,'product/detail.html',context)
+    context={'object':obj}
+    return render(request,'Apartment/detail.html',context)
