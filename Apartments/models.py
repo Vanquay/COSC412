@@ -8,7 +8,16 @@ class Apartment(models.Model):
     Occupied=models.BooleanField(default=False)
     Tenant_Name=models.TextField(default='Unoccupied')
 
-class Tenant(models.Model):
+class TenantUser(models.Model):
     First_Name=models.TextField()
+    Last_Name=models.TextField()
+    SSN=models.CharField(max_length=9)
+    Username=models.TextField()
+    Password=models.CharField(max_length=9)
+
+class Bills(models.Model):
+    Category=models.CharField(max_length=16)
+    
+
     
 
