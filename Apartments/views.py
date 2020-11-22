@@ -10,3 +10,6 @@ def homepage_view(request,*args,**kwargs):
 def complaint_view(request,*args,**kwargs):
     print(request.user)
     return render(request,"complaint.html")
+
+def UserLogin_view(request,*args,**kwargs):
+    return render(request,'UserLogin.html')

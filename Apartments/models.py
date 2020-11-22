@@ -5,7 +5,7 @@ class Apartment(models.Model):
     Unit=models.CharField(max_length=7)
     Price=models.FloatField(default=799.0)
     Description=models.TextField(blank=True,null=True)
-    Occupied=models.BooleanField()
+    Occupied=models.BooleanField(default=False)
     Tenant_Name=models.TextField(default='Unoccupied')
 
 class Tenant(models.Model):
