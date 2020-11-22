@@ -21,3 +21,10 @@ def payment_view(request,*args,**kwargs):
     context={'Ad':'We love having you in our facility',
             'Contact':6672283425}
     return render(request,'payment.html',context)
+
+#Model Views
+def apartment_view(request):
+    obj=Apartment.objects.get(id=1)
+    context={'Unit':obj.Unit,
+            'Tenant': obj.Tenant_Name}
+    return render(request,'product/detail.html',context)

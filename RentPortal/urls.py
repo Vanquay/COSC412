@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-#from Apartments import views
-from Pages import views
+from Apartments import views
+
 
 urlpatterns = [
     path('',views.homepage_view,name='home'),
@@ -24,6 +24,7 @@ urlpatterns = [
     path('home/',views.home_view),
     path('complaint/',views.complaint_view),
     path('admin/', admin.site.urls),
-    path('welcome',views.UserLogin_view),
-    path('payment',views.payment_view)
+    path('welcome/',views.UserLogin_view),
+    path('payment/',views.payment_view),
+    path('product/',views.apartment_view)
 ]
