@@ -19,6 +19,9 @@ from Apartments import views
 
 urlpatterns = [
     path('',views.homepage_view,name='home'),
+    #Dont run next line
+    path('home/',views.home_view),
     path('complaint/',views.complaint_view),
     path('admin/', admin.site.urls),
+    path('welcome',views.UserLogin_view)
 ]
