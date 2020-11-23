@@ -9,16 +9,18 @@ class Apartment(models.Model):
     Tenant_Name=models.TextField(default='Unoccupied')
 
 class TenantUser(models.Model):
-    First_Name=models.TextField()
-    Last_Name=models.TextField()
-    SSN=models.CharField(max_length=9)
-    Username=models.TextField()
-    Password=models.CharField(max_length=9)
+    First_Name=models.CharField(max_length=16,blank=False,null=True)
+    Last_Name=models.CharField(max_length=16,blank=False,null=True)
+    SSN=models.CharField(max_length=9,blank=False,null=True)
+    Username=models.CharField(max_length=16,blank=False,null=True)
+    Password=models.CharField(max_length=16,blank=False,null=True)
 
 class Bills(models.Model):
     Category=models.CharField(max_length=16)
     Bill=models.IntegerField(default=0)
     
 
-    
+class WorkOrder(models.Model):
+    Resolved=models.BooleanField(default=False)
+    Issue=models.TextField() 
 

@@ -3,4 +3,9 @@
 {% block content %}
 <h1>Log into the Rent Portal</h1>
 <p>Passwords are case sensitive</p>
+
+<form method='POST'> {% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' value='Save'/>
+</form>
 {% endblock %}
