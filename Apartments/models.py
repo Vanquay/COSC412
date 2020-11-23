@@ -17,7 +17,7 @@ class TenantUser(models.Model):
 
 class Bills(models.Model):
     Category=models.CharField(max_length=16)
-    Bill=models.IntegerField()
+    Bill=models.IntegerField(default=0)
     
 
     
