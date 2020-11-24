@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Apartment
+import stripe
+from django.contrib import admin
 from .forms import UserForm
+from django.conf import settings
+from django.urls import reverse
 
 # Create your views here.
 def homepage_view(request,*args,**kwargs):
@@ -36,3 +40,27 @@ def userLogin_form_view(request):
 
     context={'form': form}
     return render(request,'userLogin.html',context)
+
+def index(request):
+    stripe.api_key=settings.STRIPE_PRIVATE_KEY
+
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price': 'price_1HqqFGEHDBTTzNBJNQssOgod',
+            'quantity': 1
+                    }],
+        mode='payment',
+        success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url=request.build_absolute_uri(reverse('index')),
+    )
+    context={
+            'session_id': session_id,
+            'stripe_public_key': settings.STR
+    }
+    return render(request,'index.html')
+
+#Dynamic Lookup views
+#def dynami_lookup_views(request):
+ #   obj=Apartment.objects.get(id=1)
+  #  context=
