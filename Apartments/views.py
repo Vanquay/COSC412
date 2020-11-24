@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Apartment
-import stripe
+from django.conf import settings
 from django.contrib import admin
 from .forms import UserForm
-from django.conf import settings
 from django.urls import reverse
+
+import stripe
 
 # Create your views here.
 def homepage_view(request,*args,**kwargs):
@@ -55,7 +56,7 @@ def index(request):
         cancel_url=request.build_absolute_uri(reverse('index')),
     )
     context={
-            'session_id': session_id,
+            'session_id': session.id,
             'stripe_public_key': settings.STR
     }
     return render(request,'index.html')
