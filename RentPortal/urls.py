@@ -26,5 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('welcome/',views.userLogin_form_view),
     path('payment/',views.payment_view),
-    path('product/',views.apartment_detail_view)
+    path('product/',views.apartment_detail_view),
+    path('checkout/',views.index,name='index'),
+    path('thanks/',views.thanks,name='thanks')
 ]

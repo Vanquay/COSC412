@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from .models import Apartment
 from django.conf import settings
 from django.contrib import admin
+from django.views.decorators.csrf import csrf_exempt
 from .forms import UserForm
 from django.urls import reverse
 
@@ -42,6 +43,9 @@ def userLogin_form_view(request):
     context={'form': form}
     return render(request,'userLogin.html',context)
 
+def thanks(request):
+    return render(request, 'thanks.html')
+
 def index(request):
     stripe.api_key=settings.STRIPE_PRIVATE_KEY
 
@@ -49,7 +53,7 @@ def index(request):
         payment_method_types=['card'],
         line_items=[{
             'price': 'price_1HqqFGEHDBTTzNBJNQssOgod',
-            'quantity': 1
+            'quantity':1
                     }],
         mode='payment',
         success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
@@ -57,7 +61,7 @@ def index(request):
     )
     context={
             'session_id': session.id,
-            'stripe_public_key': settings.STR
+            'stripe_public_key': settings.STRIPE_PUBLIC_KEY
     }
     return render(request,'index.html')
 
