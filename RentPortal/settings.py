@@ -21,10 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'zq9k1i=u_=hrn+m$)$e82q#eljp97xf^lef$lb6=09fm-9wm1w'
+#SECRET_KEY = 'zq9k1i=u_=hrn+m$)$e82q#eljp97xf^lef$lb6=09fm-9wm1w'
+
+SECRET_KEY=os.environ.get('DJANGO_SECRET_KEY','zq9k1i=u_=hrn+m$)$e82q#eljp97xf^lef$lb6=09fm-9wm1w')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG=os.environ.get('DJANGO_DEBUG','')!='False'
 
 ALLOWED_HOSTS = []
 
@@ -47,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,12 +85,9 @@ WSGI_APPLICATION = 'RentPortal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rentportal',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'aabayo1',
-        'PASSWORD': 'Boyplae@2',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
+
     }
 }
 
