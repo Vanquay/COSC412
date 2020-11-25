@@ -51,7 +51,7 @@ def login_view(request,*args,**kwargs):
     context={}
     return render(request,'login.html',context)
 
-def logout_view(requets,*args,**kwargs):
+def logout_view(request,*args,**kwargs):
     logout(request)
     return redirect('login')
 
@@ -87,14 +87,6 @@ def apartment_detail_view(request):
     return render(request,'Apartment/detail.html',context)
 
 #Form Views
-def userLogin_form_view(request):
-    form=UserForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form=UserForm()
-
-    context={'form': form}
-    return render(request,'userLogin.html',context)
 
 @login_required(login_url='login')
 def thanks(request):
