@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -131,3 +132,7 @@ STATIC_URL = '/static/'
 STRIPE_PUBLIC_KEY='pk_test_51HqnloEHDBTTzNBJShq2NZsc37jEcyiTJ3D0RD1Zqmz9EQqFxilk7QKLb2YOxW1cF3VMltdGhs4ooTgFM6yomqyk00lMWw8usY'
 
 STRIPE_PRIVATE_KEY='sk_test_51HqnloEHDBTTzNBJbjx7cTDnEIkZH9IGd2UTpEAfvccVElLIADGrLIbErnlqHRx66NybledznxpxGRG7I8yJ5gZa0012D7ccfO'
+
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
+
+django_heroku.settings(locals())
