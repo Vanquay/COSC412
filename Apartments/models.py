@@ -11,9 +11,8 @@ class Apartment(models.Model):
 class TenantUser(models.Model):
     First_Name=models.CharField(max_length=16,blank=False,null=True)
     Last_Name=models.CharField(max_length=16,blank=False,null=True)
-    SSN=models.CharField(max_length=9,blank=False,null=True)
-    Username=models.CharField(max_length=16,blank=False,null=True)
-    Password=models.CharField(max_length=16,blank=False,null=True)
+    Unit=models.CharField(max_length=9,blank=False,null=True)
+    
 
 class Bills(models.Model):
     Category=models.CharField(max_length=16)
@@ -21,5 +20,5 @@ class Bills(models.Model):
 
 class WorkOrders(models.Model):
     Issue=models.TextField()
-    Issue=models.BooleanField(default=False)
+    Resolved=models.BooleanField(default=False)
 

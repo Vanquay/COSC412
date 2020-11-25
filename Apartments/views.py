@@ -8,7 +8,7 @@ from django.contrib import admin,messages
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from .forms import CreateUserForm
+from .forms import CreateUserForm,WorkOrderForm
 from django.urls import reverse
 
 import stripe
@@ -57,14 +57,22 @@ def logout_view(requets,*args,**kwargs):
 
 @login_required(login_url='login')
 def complaint_view(request,*args,**kwargs):
-    print('Welcome ' + request.user)
-    if request.method='POST':
+    print('Welcome ', request.user)
+    if request.method=='POST':
         form=WorkOrderForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect()
-    
+            return redirect('workOrderThanks')
+    else:
+        form=WorkOrderForm()
+
+    context={'form': form} 
     return render(request,"complaint.html",context)
+
+@login_required(login_url='login')
+def workOrderThanks_view(request,*args,**kwargs):
+    return render(request,'workOrderThanks.html')
+
 
 @login_required(login_url='login')
 def payment_view(request,*args,**kwargs):
