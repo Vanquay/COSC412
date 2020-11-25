@@ -18,9 +18,8 @@ class TenantUser(models.Model):
 class Bills(models.Model):
     Category=models.CharField(max_length=16)
     Bill=models.IntegerField(default=0)
-    
 
-class WorkOrder(models.Model):
-    Resolved=models.BooleanField(default=False)
-    Issue=models.TextField() 
+class WorkOrders(models.Model):
+    Issue=models.TextField()
+    Issue=models.BooleanField(default=False)
 

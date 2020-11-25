@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Apartments',
     'Documents',
+    'stripe.data',
+    'stripe.api_resources',
+    'stripe',
 ]
 
 MIDDLEWARE = [

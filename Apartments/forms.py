@@ -1,19 +1,17 @@
 from django import forms
-from .models import TenantUser
+from django.forms import ModelForm
+from .models import TenantUser,WorkOrders
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-class UserForm(forms.ModelForm):
-    email=forms.EmailField()
+
+
+class CreateUserForm(UserCreationForm):
+	class Meta:
+		model = User
+		fields = ['username','email', 'password1','password2']
+
+class WorkOrderForm(ModelForm):
     class Meta:
-        model=TenantUser
-        fields={'First_Name',
-                'Last_Name',
-                'SSN',
-                'Username',
-                'Password'
-                }
-    
-    def clean_email(self,*args,**kwargs):
-        email=self.cleaned_data.get('email')
-        if not email.contains('@'):
-            raise forms.ValidationError('invalid email')
-        return email
+        model=WorkOrders
+        fields={'Issue'}
