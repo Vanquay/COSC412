@@ -4,7 +4,7 @@ from django.http import request
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from .models import Apartment,Bills,TenantUser,WorkOrders
+from .models import Apartment,TenantUser,WorkOrders,Bills
 
 # Register your models here.
 admin.site.site_header='StingyMeany Rent Portal'
