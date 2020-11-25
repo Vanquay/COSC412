@@ -81,12 +81,11 @@ WSGI_APPLICATION = 'RentPortal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'RentPortal',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'rentportal',
         'HOST': 'localhost',
-        'PORT': '5432',
-        'USER': 'postgres',
-        'PASSWORD': 'Boyplae@1'
+        'PORT': '3306',
+        'USER': 'RentAdmin',
     }
 }
 
