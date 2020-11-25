@@ -20,15 +20,13 @@ from Apartments import views
 
 urlpatterns = [
 
-        path('home/',views.registration_view,name='register'),
         path('login/',views.login_view,name='login'),
         path('logout/',views.logout_view,name='logout'),
 
-    path('',views.homepage_view,name='home'),
+    path('',views.registration_view,name='home'),
     path('complaint/',views.complaint_view,name='complaint'),
     path('admin/', admin.site.urls),
     path('workThanks/',views.workOrderThanks_view,name='workOrderThanks'),
-    path('registerlogin/',views.registration_view),
     path('payment/',views.payment_view,name='payment'),
     path('product/',views.apartment_detail_view),
     path('checkout/',views.index,name='index'),
