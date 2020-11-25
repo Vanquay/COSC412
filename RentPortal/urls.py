@@ -26,7 +26,7 @@ urlpatterns = [
 
     path('',views.homepage_view,name='home'),
     path('complaint/',views.complaint_view,name='complaint'),
-    path('admin/', admin.site.urls,name='admin'),
+    path('admin/', admin.site.urls),
     path('workThanks/',views.workOrderThanks_view,name='workOrderThanks'),
     path('registerlogin/',views.registration_view),
     path('payment/',views.payment_view,name='payment'),
