@@ -8,6 +8,13 @@ class Apartment(models.Model):
     Occupied=models.BooleanField(default=False)
     Tenant_Name=models.TextField(default='Unoccupied')
 
+    def __str__(self):
+        return self.Unit
+        return self.Price
+        return self.Description
+        return self.Occupied
+        return self.Tenant_Name
+
 class TenantUser(models.Model):
     First_Name=models.CharField(max_length=16,blank=False,null=True)
     Last_Name=models.CharField(max_length=16,blank=False,null=True)
@@ -17,6 +24,7 @@ class TenantUser(models.Model):
 class Bills(models.Model):
     Category=models.CharField(max_length=16)
     Bill=models.IntegerField(default=0)
+    TenantName=models.CharField(max_length=50)
 
 class WorkOrders(models.Model):
     Issue=models.TextField()
